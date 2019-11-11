@@ -4,7 +4,7 @@ import java.security.InvalidParameterException;
 
 public enum TaskStatus {
 
-    NOT_STARTED("Not Started"), IN_PROGRESS("In Progress"), COMPLETED("Completed");
+    COMPLETED("Completed");
 
     private final String value;
 

@@ -52,7 +52,40 @@ Execute following command to run the application by going in the directory.
 
     ./gradlew bootrun
 
+## Services information
 
+1) Create a new Task
+	Endpoint : localhost:8080/distribution-service/v1/tasks
+	Request Method: POST
+	Request Headers : Authorization:Basic YWRtaW46dGVzdGluZzEyMyQ=
+					  Content-Type:application/json
+	Request Body:
+	 {
+		"skillNames": ["skill1", "skill2"],
+		"priority" : "Low",
+	 	"taskStatus":"Not Started"
+	}
+	Response: 
+	{
+	    "taskId": 8,
+	    "agentId": 3,
+	    "skillIds": [
+	        1
+	    ],
+	    "skillNames": [
+	        "skill1"
+	    ],
+	    "priority": "Low",
+	    "taskStatus": "Not Started"
+	}
+	
+2) Update Task status to Completed
+	Endpoint : localhost:8080/distribution-service/v1/tasks/6/status/Completed
+	Request Method: PUT
+	Request Headers : Authorization:Basic YWRtaW46dGVzdGluZzEyMyQ=
+					  Content-Type:application/json
+	Request Body:
+	Response: 200 OK
 
 ---
 

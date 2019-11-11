@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.security.InvalidParameterException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -119,7 +120,7 @@ public class TaskAssignmentServiceTest {
     public void testUpdateTaskStatus() {
         String taskStatus = "Completed";
         Integer taskId = 1;
-        when(taskAssignmentRepository.updateTaskStatus(taskId, taskStatus)).thenReturn(0);
+        when(taskAssignmentRepository.updateTaskStatus(taskId, taskStatus, LocalDateTime.now())).thenReturn(0);
         Mono<Integer> returedValue = service.updateTaskStatus(taskId, taskStatus);
         Integer integer1 = returedValue.block();
         assertTrue ( integer1 == 0);

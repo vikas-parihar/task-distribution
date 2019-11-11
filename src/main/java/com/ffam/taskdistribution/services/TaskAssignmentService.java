@@ -75,7 +75,8 @@ public class TaskAssignmentService {
     
     public Mono<Integer> updateTaskStatus(Integer taskId, String taskStatus) {
         TaskStatus status = TaskStatus.fromValue(taskStatus);
-        return Mono.just(taskAssignmentRepository.updateTaskStatus(taskId, status.value()));
+        LocalDateTime completionDate = LocalDateTime.now();
+        return Mono.just(taskAssignmentRepository.updateTaskStatus(taskId, status.value(), completionDate));
     }
     
     

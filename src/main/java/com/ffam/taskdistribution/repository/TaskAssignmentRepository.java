@@ -1,5 +1,6 @@
 package com.ffam.taskdistribution.repository;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -27,7 +28,7 @@ public interface TaskAssignmentRepository
     
     @Modifying
     @Transactional
-    @Query("update TaskAssignments set taskStatus = ?2  where taskId = ?1")
-    Integer updateTaskStatus(Integer taskId, String taskStatus);
+    @Query("update TaskAssignments set taskStatus = ?2, completeDate = ?3  where taskId = ?1")
+    Integer updateTaskStatus(Integer taskId, String taskStatus, LocalDateTime completionDate);
 
 }
