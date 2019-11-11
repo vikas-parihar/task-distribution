@@ -22,6 +22,7 @@ import com.ffam.taskdistribution.repository.SkillRepository;
 import com.ffam.taskdistribution.repository.TaskAssignmentRepository;
 
 import javassist.NotFoundException;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -90,6 +91,11 @@ public class TaskAssignmentService {
         return Mono.just(taskAssignmentRepository.updateTaskStatus(taskId, status.value(), completionDate));
     }
     
+    public Flux<TaskAssignments> getAllTasks() {
+        LinkedList<TaskAssignments> allTasks = taskAssignmentRepository.getAllTasks();
+        return Flux.fromIterable(allTasks);
+       // return taskAssignmentRepository.getAllTasks();
+    }
     
     private boolean isAgentAvailableToPickTaks(List<TaskAssignments> agentTasks, String taskPriority, Integer agentId) {
         boolean isAgentAvailableToPick = false; 

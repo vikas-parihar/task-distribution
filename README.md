@@ -86,6 +86,76 @@ Execute following command to run the application by going in the directory.
 						  Content-Type:application/json
 		Request Body:
 		Response: 200 OK
+		
+	3) Get all Tasks with agents are assigned
+			Endpoint : localhost:8080/distribution-service/v1/tasks
+			Request Method: GET
+			Request Headers : Authorization:Basic YWRtaW46dGVzdGluZzEyMyQ=
+						  Content-Type:application/json
+			Request Body:
+			Response: 
+			[
+			    {
+			        "taskId": 16,
+			        "agentId": 9,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "High",
+			        "taskStatus": "Not Started"
+			    },
+			    {
+			        "taskId": 15,
+			        "agentId": 6,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "High",
+			        "taskStatus": "Not Started"
+			    },
+			    {
+			        "taskId": 14,
+			        "agentId": 3,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "High",
+			        "taskStatus": "Not Started"
+			    },
+			    {
+			        "taskId": 13,
+			        "agentId": 9,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "Low",
+			        "taskStatus": "Not Started"
+			    },
+			    {
+			        "taskId": 12,
+			        "agentId": 6,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "Low",
+			        "taskStatus": "Not Started"
+			    },
+			    {
+			        "taskId": 11,
+			        "agentId": 3,
+			        "skillIds": [
+			            1
+			        ],
+			        "skillNames": null,
+			        "priority": "Low",
+			        "taskStatus": "Not Started"
+			    }
+			]
 
 
 

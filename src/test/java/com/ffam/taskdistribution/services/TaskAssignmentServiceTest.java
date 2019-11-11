@@ -1,5 +1,6 @@
 package com.ffam.taskdistribution.services;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -25,6 +26,7 @@ import com.ffam.taskdistribution.repository.AgentRepository;
 import com.ffam.taskdistribution.repository.SkillRepository;
 import com.ffam.taskdistribution.repository.TaskAssignmentRepository;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class TaskAssignmentServiceTest {
@@ -124,6 +126,15 @@ public class TaskAssignmentServiceTest {
         Mono<Integer> returedValue = service.updateTaskStatus(taskId, taskStatus);
         Integer integer1 = returedValue.block();
         assertTrue ( integer1 == 0);
+    }
+    
+    @Test
+    public void testGetAllTasks() {
+        when(taskAssignmentRepository.getAllTasks()).thenReturn(getMockTaskAssignmentWithAgents());
+        Flux<TaskAssignments> returedValue = service.getAllTasks();
+        TaskAssignments tasks = returedValue.blockFirst();
+        assertNotNull(tasks);
+        assertEquals(tasks.getPriority(), "High");
     }
     
     private TaskAssignments mockTaskAssignments () {

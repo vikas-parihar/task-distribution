@@ -1,6 +1,7 @@
 package com.ffam.taskdistribution.routingconfig;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
@@ -43,6 +44,7 @@ public class ServiceRoutingConfiguration {
     public RouterFunction<ServerResponse> orgRoutes() {
         TaskDistributionHandler serviceHandler = appContext.getBean(TaskDistributionHandler.class);
         return route(POST(V1_DISTRIBUTION_URL), serviceHandler::createTaskAssignment)
-                .andRoute(PUT(V1_TASK_URL), serviceHandler::updateTaskAssignmentStatus);
+                .andRoute(PUT(V1_TASK_URL), serviceHandler::updateTaskAssignmentStatus)
+                .andRoute(GET(V1_DISTRIBUTION_URL), serviceHandler::getAllTasks);
     }
 }

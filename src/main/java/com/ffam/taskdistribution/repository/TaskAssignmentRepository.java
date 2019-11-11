@@ -27,5 +27,9 @@ public interface TaskAssignmentRepository
     @Transactional
     @Query("update TaskAssignments set taskStatus = ?2, completeDate = ?3  where taskId = ?1")
     Integer updateTaskStatus(Integer taskId, String taskStatus, LocalDateTime completionDate);
+    
+    @Query("select ta from TaskAssignments ta where ta.taskStatus != 'Completed'"
+            + " ORDER BY start_date DESC NULLS LAST")
+    LinkedList<TaskAssignments> getAllTasks();
 
 }

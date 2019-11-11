@@ -12,6 +12,7 @@ import com.ffam.taskdistribution.entities.TaskAssignments;
 import com.ffam.taskdistribution.exception.ErrorHandler;
 import com.ffam.taskdistribution.services.TaskAssignmentService;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -35,7 +36,16 @@ public class TaskDistributionHandler {
                 request.pathVariable("status")));
     }
     
+    public Mono<ServerResponse> getAllTasks(final ServerRequest request) {
+        return serverResponsFluxTaskAssignment(taskAssignmentService.getAllTasks());
+    }
+    
     private Mono<ServerResponse> serverResponsMonoTaskAssignment(Mono<TaskAssignments> taskAssignments) {
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(taskAssignments,
+                TaskAssignments.class).onErrorResume(errorHandler :: throwableError);
+    }
+    
+    private Mono<ServerResponse> serverResponsFluxTaskAssignment(Flux<TaskAssignments>  taskAssignments) {
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(taskAssignments,
                 TaskAssignments.class).onErrorResume(errorHandler :: throwableError);
     }
