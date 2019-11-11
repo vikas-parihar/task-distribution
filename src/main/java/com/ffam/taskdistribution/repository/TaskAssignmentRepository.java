@@ -19,9 +19,6 @@ import com.ffam.taskdistribution.entities.TaskAssignments;
 public interface TaskAssignmentRepository
         extends CrudRepository<TaskAssignments, String> {
 
-    @Query("select ta from TaskAssignments ta where ta.taskId = ?1")
-    TaskAssignments getTaskAssignmentById(Integer taskId);
-    
     @Query("select ta from TaskAssignments ta where ta.skillIds = ?1 and ta.agentId in ?2 and ta.taskStatus != 'Completed'"
             + " ORDER BY start_date DESC NULLS LAST")
     LinkedList<TaskAssignments> getTasksBySkillIdAndAgent(Integer[] skillIds, Collection<Integer> agentIds);

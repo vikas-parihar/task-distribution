@@ -14,9 +14,6 @@ import com.ffam.taskdistribution.entities.Skill;
 public interface SkillRepository
         extends CrudRepository<Skill, String> {
 
-    @Query("select skill from Skill skill where skill.skillName = ?1")
-    Skill getSkillsBySkillIds(String stringName);
-    
     @Query("select skill.skillId from Skill skill where skill.skillName in ?1")
     Integer[] getSkillIdsBySkillNames( Collection<String> names);
 

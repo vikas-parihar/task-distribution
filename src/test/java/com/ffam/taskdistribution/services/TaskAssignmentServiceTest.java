@@ -75,7 +75,7 @@ public class TaskAssignmentServiceTest {
         Mono<TaskAssignments> returnedAssignments = service.saveTaskAssignment(taskAssignments);
         assertNotNull(returnedAssignments);
         try {
-            TaskAssignments returnedTaskAssignments = returnedAssignments.block();
+            returnedAssignments.block();
         } catch (Exception e) {
            assertTrue(e instanceof InvalidParameterException);
         }
@@ -93,7 +93,7 @@ public class TaskAssignmentServiceTest {
         Mono<TaskAssignments> returnedAssignments = service.saveTaskAssignment(taskAssignments);
         assertNotNull(returnedAssignments);
         try {
-            TaskAssignments returnedTaskAssignments = returnedAssignments.block();
+            returnedAssignments.block();
         } catch (Exception e) {
           assertNotNull(e);
         }
