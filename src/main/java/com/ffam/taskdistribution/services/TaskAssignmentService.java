@@ -78,10 +78,6 @@ public class TaskAssignmentService {
         return Mono.just(taskAssignmentRepository.updateTaskStatus(taskId, status.value()));
     }
     
-    public TaskAssignments geTaskAssignments(Integer taskId) {
-        return taskAssignmentRepository.getTaskAssignmentById(taskId);
-        
-    }
     
     private boolean isAgentAvailableToPickTaks(List<TaskAssignments> agentTasks, String taskPriority, Integer agentId) {
         boolean isAgentAvailableToPick = false; 
