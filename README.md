@@ -41,8 +41,8 @@ Install any IDE to connect to postgres like (Datagrip). Create the database call
 Add the following properties in applicaiton.properties file 
      
      spring.datasource.url=jdbc:postgresql://localhost:5432/workdistribution
-     spring.datasource.username=pearson
-     spring.datasource.password=pearson
+     spring.datasource.username=root
+     spring.datasource.password=testing123$
      
      
 
