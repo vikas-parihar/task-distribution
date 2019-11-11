@@ -5,15 +5,12 @@ Project uses Gradle as the build tool `gradle -v`. The project is set for java c
 
 The above gradle setting enables the build script to use the mentioned Java version to use when compiling Java source. So 1.8 is the recommended JVM to use.
 
-[BACK to TOC](../../README.md)
-
 ---
 
 ## Build the artifact
 
 Go to the root of the project folder where the code is checked out and simply execute `gradle build`. This will get the code compiled and assembles the artifacts and executed the test (Unit test) and generates the coverage report (Jacoco).
 
-[BACK to TOC](../../README.md)
 
 ---
 
@@ -56,7 +53,6 @@ Execute following command to run the application by going in the directory.
     ./gradlew bootrun
 
 
-[BACK to TOC](../../README.md)
 
 ---
 
